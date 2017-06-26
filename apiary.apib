@@ -1,0 +1,72 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Favourite Car 
+
+Provide your choice to vote for best car in mid segment
+## Questions Collection [/cars]
+
+### List All Questions [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "question": "Possible choice of cars",
+                "choices": [
+                    {
+                        "choice": "Hyundai"
+                    }, {
+                        "choice": "Maruti",
+                    }, {
+                        "choice": "Toyota",
+                    }
+                ]
+            }
+        ]
+
+### Create a New Question [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        {
+            "question": "Which is your favourite mid segment car?",
+            "choices": [
+                "Maruti",
+                "Hyundai",
+                "Toyota",
+                "Honda"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "question": "Which is your favourite mid segment car?",
+                "published_at": "2017-06-26T19:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Maruti",
+                        "votes": 0
+                    }, {
+                        "choice": "Hyundai",
+                        "votes": 0
+                    }, {
+                        "choice": "Toyota",
+                        "votes": 0
+                    }, {
+                        "choice": "Honda",
+                        "votes": 0
+                    }
+                ]
+            }
